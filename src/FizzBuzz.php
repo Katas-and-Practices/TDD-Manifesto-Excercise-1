@@ -6,18 +6,25 @@ namespace ExerciseOne;
 
 class FizzBuzz
 {
-    public function fizzBuzz(int $int): string
+    private array $dividerToStringAssociation = [
+        15 => 'FizzBuzz',
+        3 => 'Fizz',
+        5 => 'Buzz'
+    ];
+
+    public function fizzBuzz(int $input): string
     {
-        if ($int % 3 === 0 && $int % 5 === 0) {
-            return 'FizzBuzz';
-        }
-        if ($int % 3 === 0) {
-            return 'Fizz';
-        }
-        if ($int % 5 === 0) {
-            return 'Buzz';
+        return $this->generateString($input);
+    }
+
+    private function generateString(int $input): string|null
+    {
+        foreach ($this->dividerToStringAssociation as $divider => $string) {
+            if ($input % $divider === 0) {
+                return $string;
+            }
         }
 
-        return (string)$int;
+        return (string)$input;
     }
 }
