@@ -45,4 +45,11 @@ class FizzBuzzTest extends TestCase
 
         $this->assertSame('Fizz', $result);
     }
+
+    public function testShouldReturnBuzzGivenMultiplesOfFive(): void
+    {
+        $result = $this->fizzBuzz->fizzBuzz(20);
+
+        $this->assertSame('Buzz', $result);
+    }
 }
