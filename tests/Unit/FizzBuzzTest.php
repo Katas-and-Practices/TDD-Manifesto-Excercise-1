@@ -11,32 +11,31 @@ use PHPUnit\Framework\TestCase;
 
 class FizzBuzzTest extends TestCase
 {
+    private $fizzBuzz;
+
+    public function setUp(): void
+    {
+        $this->fizzBuzz = new FizzBuzz();
+    }
+
     public function testShouldReturnStringWhenGivenInteger(): void
     {
-        $fizzBuzz = new FizzBuzz();
-
-        $result = $fizzBuzz->fizzBuzz(0);
+        $result = $this->fizzBuzz->fizzBuzz(0);
 
         $this->assertIsString($result);
     }
 
     public function testShouldReturnGivenIntegerAsString(): void
     {
-        $fizzBuzz = new FizzBuzz();
+        $result = $this->fizzBuzz->fizzBuzz(13);
 
-        $result = $fizzBuzz->fizzBuzz(13);
-
-        $this->assertIsString($result);
         $this->assertSame('13', $result);
     }
 
     public function testShouldReturnGivenNegativeIntegerAsString(): void
     {
-        $fizzBuzz = new FizzBuzz();
+        $result = $this->fizzBuzz->fizzBuzz(-73);
 
-        $result = $fizzBuzz->fizzBuzz(-73);
-
-        $this->assertIsString($result);
         $this->assertSame('-73', $result);
     }
 }
